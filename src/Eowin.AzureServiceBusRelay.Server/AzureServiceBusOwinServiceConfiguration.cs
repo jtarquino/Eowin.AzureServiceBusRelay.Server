@@ -20,7 +20,7 @@ namespace Eowin.AzureServiceBusRelay.Server
             return new TransportClientEndpointBehavior
             {
                 TokenProvider =
-                    TokenProvider.CreateSharedSecretTokenProvider(IssuerName, IssuerSecret)
+                    TokenProvider.CreateSharedAccessSignatureTokenProvider(IssuerName, IssuerSecret)
             };
         }
     }

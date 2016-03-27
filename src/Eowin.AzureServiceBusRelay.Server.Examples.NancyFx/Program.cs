@@ -14,6 +14,7 @@ namespace Eowin.AzureServiceBusRelay.Server.Examples.NancyFx
                 issuerName: "owner",
                 issuerSecret: SecretCredentials.Secret,
                 address: address);
+            
             var server = AzureServiceBusOwinServer.Create(sbConfig, app =>
             {
                 app.UseNancy();

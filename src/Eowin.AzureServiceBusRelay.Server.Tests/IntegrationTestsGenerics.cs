@@ -1,25 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Net.Http.Headers;
+using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
-using Newtonsoft.Json.Linq;
-using Xunit;
 using Owin;
+using System.Diagnostics;
 
 namespace Eowin.AzureServiceBusRelay.Server.Tests
 {
-    public class IntegrationTests : IntegrationTestsBase, IDisposable
+    public class IntegrationTestsGenerics : IntegrationTestsBase, IDisposable
     {
-
-
         private readonly AzureServiceBusOwinServer _server;
-
-        public IntegrationTests()
+        public IntegrationTestsGenerics()
         {
             var sbConfig = new AzureServiceBusOwinServiceConfiguration(
                 issuerName: "RootManageSharedAccessKey",
@@ -38,6 +31,7 @@ namespace Eowin.AzureServiceBusRelay.Server.Tests
                 app.UseWebApi(config);
             });
         }
+
 
         public void Dispose()
         {

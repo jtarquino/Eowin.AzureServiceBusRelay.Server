@@ -9,7 +9,8 @@ namespace Eowin.AzureServiceBusRelay.Server.Tests
             get
             {
                 var addr = Environment.GetEnvironmentVariable("ServiceBusAddress");
-                if(string.IsNullOrWhiteSpace(addr)) throw new InvalidOperationException("ServiceBusAddress is not defined");
+                addr = "https://jtarquino.servicebus.windows.net/webapi/";
+                if (string.IsNullOrWhiteSpace(addr)) throw new InvalidOperationException("ServiceBusAddress is not defined");
                 return addr;
             }
         }
@@ -19,6 +20,7 @@ namespace Eowin.AzureServiceBusRelay.Server.Tests
             get
             {
                 var secret = Environment.GetEnvironmentVariable("ServiceBusSecret");
+                secret = "RYNGOVD2uDQanJnYIDp0fdZc5xmp3CSCJVKvVNk48xk=";
                 if (string.IsNullOrWhiteSpace(secret)) throw new InvalidOperationException("ServiceBusSecret is not defined");
                 return secret;
             }

@@ -68,10 +68,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IntegrationTestsBase.cs" />
+    <Compile Include="IntegrationTestsGenerics.cs" />
     <Compile Include="RequestExecutor.cs" />
     <Compile Include="IntegrationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SecretCredentials.cs" />
+    <Compile Include="Startup.cs" />
     <Compile Include="TestController.cs" />
   </ItemGroup>
   <ItemGroup>
