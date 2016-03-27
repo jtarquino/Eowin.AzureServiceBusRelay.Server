@@ -18,18 +18,8 @@ namespace Eowin.AzureServiceBusRelay.Server.Tests
                 issuerName: "RootManageSharedAccessKey",
                 issuerSecret: SecretCredentials.Secret,
                 address: SecretCredentials.ServiceBusAddress);
-            _server = AzureServiceBusOwinServer.Create(sbConfig, app =>
-            {
-                var config = new HttpConfiguration();
-                config.Routes.MapHttpRoute("ApiDefault", "webapi/{controller}/{id}", new { id = RouteParameter.Optional });
 
-                app.Use((ctx, next) =>
-                {
-                    Trace.TraceInformation(ctx.Request.Uri.ToString());
-                    return next();
-                });
-                app.UseWebApi(config);
-            });
+            _server = AzureServiceBusOwinServer.Create<Startup>(sbConfig);
         }
 
 

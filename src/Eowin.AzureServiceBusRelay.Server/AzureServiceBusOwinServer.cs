@@ -19,6 +19,33 @@ namespace Eowin.AzureServiceBusRelay.Server
             return server;
         }
 
+        public static AzureServiceBusOwinServer Create<TStartup>(AzureServiceBusOwinServiceConfiguration config)
+        {
+            var server = new AzureServiceBusOwinServer();
+            server.Configure<TStartup>(config);
+            return server;
+        }
+
+        protected void Configure<TStartup>(AzureServiceBusOwinServiceConfiguration config)
+        {
+            Configure<TStartup>(config, null);
+        }
+
+        protected void Configure<TStartup>(AzureServiceBusOwinServiceConfiguration config, StartOptions options)
+        {
+            // Compare with WebApp.StartImplementation
+            options = options ?? new StartOptions();
+            options.AppStartup = typeof(TStartup).AssemblyQualifiedName;
+
+            var serverFactory = new AzureServiceBusOwinServerFactory(config);
+            IServiceProvider services = ServicesFactory.Create();
+            var engine = services.GetService<IHostingEngine>();
+            var context = new StartContext(options);
+            context.ServerFactory = new ServerFactoryAdapter(serverFactory);
+            _started = engine.Start(context);
+            //_next = serverFactory.Invoke;
+        }
+
         private void Configure(AzureServiceBusOwinServiceConfiguration config, Action<IAppBuilder> startup)
         {
             if (startup == null)

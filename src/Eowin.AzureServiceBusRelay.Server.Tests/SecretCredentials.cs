@@ -20,7 +20,7 @@ namespace Eowin.AzureServiceBusRelay.Server.Tests
             get
             {
                 var secret = Environment.GetEnvironmentVariable("ServiceBusSecret");
-                secret = "RYNGOVD2uDQanJnYIDp0fdZc5xmp3CSCJVKvVNk48xk=";
+                secret = "HyH72IBy4igfFaYb4cVQVPlV14rPWcF2jfWncsZKS64=";
                 if (string.IsNullOrWhiteSpace(secret)) throw new InvalidOperationException("ServiceBusSecret is not defined");
                 return secret;
             }
